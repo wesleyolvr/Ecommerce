@@ -1,13 +1,12 @@
 from django.test import Client,TestCase
+from django.urls import reverse
+
 
 class IndexViewTestCase(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.url = reversed('home')
-
-    def tearDown(self):
-        pass
+        self.url = reverse('home')
 
     def test_status_code(self):
         response = self.client.get(self.url)

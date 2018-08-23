@@ -1,18 +1,28 @@
-from .models import Produto,Categoria
 from django.shortcuts import render
+
+from .models import Produto, Categoria
 
 
 def product_list(request):
-    context={
-        'produtos':Produto.objects.all()
+    context = {
+        'produtos': Produto.objects.all()
     }
-    return render(request,'catalog/products.html',context)
+    return render(request, 'catalog/products.html', context)
 
-def categoria(request,slug):
+
+def produto(request, slug):
+    produto = Produto.objects.get(slug=slug)
+    context = {
+        'produto': produto
+    }
+    return render(request, 'catalog/product.html', context)
+
+
+def categoria(request, slug):
     categoria = Categoria.objects.get(slug=slug)
 
-    context={
+    context = {
         'current_categoria': categoria,
-        'produtos':Produto.objects.filter(categoria=categoria),
+        'produtos': Produto.objects.filter(categoria=categoria),
     }
-    return render(request,'catalog/categoria.html',context)
+    return render(request, 'catalog/categoria.html', context)

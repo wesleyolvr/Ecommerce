@@ -1,16 +1,9 @@
 from django.shortcuts import render
+from catalog.models import Categoria
 
 
 def index(request):
-    texts = ['helou brotheragem',
-             'tudo bom com você?',
-             'eu estou bem!',
-             'e você?', 'tambem estou']
-    context = {
-        'texts': texts,
-        'title': 'django e-commerce',
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 
 def contact(request):
@@ -20,6 +13,3 @@ def contact(request):
 def product(request):
     return render(request, 'product.html')
 
-
-def product_list(request):
-    return render(request, 'products.html')

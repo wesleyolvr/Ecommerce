@@ -28,8 +28,6 @@ SECRET_KEY = '5*^iix@r8+j6&@0bz&_dm-p2tijzhbe8@@+qtm=p$@q5-$6v@='
 DEBUG = True
 
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'catalog',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +64,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #apps
+                'catalog.context_processors.categoria'
             ],
         },
     },
@@ -129,3 +130,8 @@ STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = ['*']
 STATIC_ROOT=os.path.join(PROJECT_ROOT,'staticfiles')
+
+try:
+    from .localsettings import *
+except ImportError:
+    pass

@@ -1,18 +1,26 @@
 from django.shortcuts import render
-from catalog.models import Categoria
+from django.core.mail import send_mail
+from .forms import ContactForm
+from django.conf import settings
+
 
 
 def index(request):
-    context={
-        'texts':['eai brotheragem','beleza?']
+    context = {
+        'texts': ['eai brotheragem', 'beleza?']
     }
-    return render(request, 'index.html',context)
+    return render(request, 'index.html', context)
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    sucess=False
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.send_mail()
+        sucess = True
 
-
-def product(request):
-    return render(request, 'product.html')
-
+    context = {
+        'forms': form,
+        'sucess':sucess
+    }
+    return render(request, 'contact.html', context)

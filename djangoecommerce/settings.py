@@ -37,13 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #libs
+    'widget_tweaks',
+
+    #apps
     'core',
     'catalog',
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,7 +138,13 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FOWARDED_PROTO','https')
 ALLOWED_HOSTS = ['*']
 STATIC_ROOT=os.path.join(PROJECT_ROOT,'staticfiles')
 
+#E-MAIL
+EMAIL_HOST=''
+EMAIL_HOST_USER=''
+EMAIL_HOST_PASSWORD=''
+DEFAULT_FROM_EMAIL='admin@djangoecommerce.com'
+
 try:
-    from .localsettings import *
+    from .local_settings import *
 except ImportError:
     pass

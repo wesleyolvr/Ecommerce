@@ -1,15 +1,13 @@
 from django.shortcuts import render
-from django.core.mail import send_mail
 from .forms import ContactForm
-from django.conf import settings
+from django.views.generic import View, TemplateView
 
 
+class IndexView(TemplateView):
 
-def index(request):
-    context = {
-        'texts': ['eai brotheragem', 'beleza?']
-    }
-    return render(request, 'index.html', context)
+    template_name = 'index.html'
+
+index = IndexView.as_view()
 
 
 def contact(request):

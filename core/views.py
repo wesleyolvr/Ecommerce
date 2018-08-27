@@ -20,7 +20,7 @@ def contact(request):
         sucess = True
 
     context = {
-        'forms': form,
+        'form': form,
         'sucess':sucess
     }
     return render(request, 'contact.html', context)

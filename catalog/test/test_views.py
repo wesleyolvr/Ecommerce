@@ -1,7 +1,9 @@
 from django.test import TestCase
 from django.urls import reverse
 from model_mommy import mommy
+
 from catalog.models import Produto
+
 
 class ProdutoIndexView(TestCase):
 
@@ -22,3 +24,6 @@ class ProdutoIndexView(TestCase):
         self.assertTrue('produtos' in response.context)
         produtos= response.context['produtos']
         self.assertEquals(produtos.count(),10)
+
+
+

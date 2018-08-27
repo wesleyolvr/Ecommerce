@@ -22,8 +22,15 @@ class ProdutoIndexView(TestCase):
     def test_context(self):
         response = self.client.get(self.url)
         self.assertTrue('produtos' in response.context)
-        produtos= response.context['produtos']
-        self.assertEquals(produtos.count(),10)
+        produtos = response.context['produtos']
+        self.assertEquals(produtos.count(),3)
+        paginator = response.context['paginator']
+        self.assertEquals(paginator.num_pages,4)
+
+    def test_page_not_found(self):
+        response = self.client.get('{}?page=5'.format(self.url))
+        self.assertEquals(response.status_code,404)
+
 
 
 

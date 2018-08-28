@@ -2,15 +2,7 @@
 
 {%block container %}
 <div class="jumbotron page-header">
-		  <p>
-              {% for item in texts %}
-              {{ item }}
-              {%if not forloop.last%}
-              ,
-              {%endif%}
-
-              {% endfor %}
-          </p>
+		  <p>Seja bem vindo {{user}}</p>
 		  <p><a class="btn btn-primary">Saiba mais</a></p>
 </div>
 {%endblock %}
